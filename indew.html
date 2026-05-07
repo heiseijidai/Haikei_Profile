@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拝啓プロフィール</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #f9a8c9;
+    --pink-light: #fde8f1;
+    --pink-dark: #e8729a;
+    --cream: #fffaf5;
+    --text: #4a3040;
+    --border: #f0b8d0;
+    --accent: #c94080;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ===== TOP PAGE ===== */
+  #top-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #fde8f1 0%, #fff0f7 50%, #fde8f1 100%);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  #top-page::before {
+    content: '✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾';
+    position: absolute; top: 10px; left: 0; right: 0;
+    text-align: center; color: var(--pink); font-size: 12px;
+    letter-spacing: 4px; overflow: hidden;
+  }
+  #top-page::after {
+    content: '✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾ ✿ ✾';
+    position: absolute; bottom: 10px; left: 0; right: 0;
+    text-align: center; color: var(--pink); font-size: 12px;
+    letter-spacing: 4px; overflow: hidden;
+  }
+  .site-logo {
+    font-family: 'DotGothic16', monospace;
+    font-size: clamp(28px, 8vw, 52px);
+    color: var(--accent);
+    text-shadow: 3px 3px 0 var(--pink), 6px 6px 0 rgba(249,168,201,0.3);
+    margin-bottom: 8px;
+    letter-spacing: 4px;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .site-subtitle {
+    font-size: 13px;
+    color: var(--pink-dark);
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+  }
+  .top-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(249,168,201,0.2);
+    position: relative;
+  }
+  .top-card::before {
+    content: '＊';
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: white; padding: 0 10px;
+    color: var(--pink-dark); font-size: 20px;
+  }
+  .top-btn {
+    display: block; width: 100%;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: 2px solid var(--pink-dark);
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--pink-light), white);
+    color: var(--accent);
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    text-decoration: none;
+    text-align: center;
+  }
+  .top-btn:hover {
+    background: linear-gradient(135deg, var(--pink), var(--pink-light));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(233,114,154,0.3);
+  }
+  .top-btn.primary {
+    background: linear-gradient(135deg, var(--pink-dark), var(--accent));
+    color: white;
+    border-color: var(--accent);
+  }
+  .top-btn.primary:hover {
+    background: linear-gradient(135deg, var(--accent), #a03060);
+  }
+  .search-row {
+    display: flex; gap: 8px;
+  }
+  .search-row input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid var(--border);
+    border-radius: 50px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 14px;
+    outline: none;
+    background: var(--pink-light);
+  }
+  .search-row input:focus { border-color: var(--pink-dark); }
+  .search-row button {
+    padding: 12px 18px;
+    background: var(--pink-dark);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .divider {
+    text-align: center;
+    color: var(--pink);
+    margin: 16px 0;
+    font-size: 12px;
+    letter-spacing: 4px;
+  }
+
+  /* ===== SHARED LAYOUT ===== */
+  #create-page, #view-page {
+    display: none;
+    min-height: 100vh;
+  }
+  .page-header {
+    background: linear-gradient(135deg, var(--pink-dark), var(--accent));
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 8px rgba(200,60,120,0.3);
+  }
+  .page-header h1 {
+    font-family: 'DotGothic16', monospace;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  .back-btn {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 13px;
+  }
+  .back-btn:hover { background: rgba(255,255,255,0.3); }
+
+  /* ===== CREATE FORM ===== */
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
+  .form-section {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 2px 2px 0 var(--pink-light);
+  }
+  .section-title {
+    font-family: 'DotGothic16', monospace;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px dashed var(--border);
+  }
+  .field-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .field-label {
+    font-size: 12px;
+    color: var(--pink-dark);
+    font-weight: 700;
+    min-width: 100px;
+    padding-top: 10px;
+    letter-spacing: 0.5px;
+  }
+  .field-row input, .field-row textarea {
+    flex: 1;
+    padding: 9px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 14px;
+    outline: none;
+    background: var(--pink-light);
+    transition: border-color 0.2s;
+  }
+  .field-row input:focus, .field-row textarea:focus {
+    border-color: var(--pink-dark);
+    background: white;
+  }
+  .field-row textarea { resize: vertical; min-height: 60px; }
+
+  /* Color picker section */
+  .color-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .color-row label { font-size: 12px; color: var(--pink-dark); font-weight: 700; min-width: 80px; }
+  .color-row input[type=color] {
+    width: 44px; height: 36px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer; padding: 2px;
+  }
+  .color-preview { font-size: 12px; color: #888; }
+
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--pink-dark), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'DotGothic16', monospace;
+    font-size: 16px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    margin-top: 8px;
+    box-shadow: 0 4px 16px rgba(200,60,120,0.3);
+    transition: all 0.2s;
+  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(200,60,120,0.4); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  /* ===== VIEW PAGE ===== */
+  #view-page-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
+  .profile-card {
+    border: 3px solid;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.08);
+  }
+  .profile-header {
+    padding: 24px 20px;
+    text-align: center;
+    border-bottom: 3px dashed;
+  }
+  .profile-hn {
+    font-family: 'DotGothic16', monospace;
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  .profile-url-display {
+    font-size: 11px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+  .profile-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .profile-table tr {
+    border-bottom: 1px dashed;
+  }
+  .profile-table tr:last-child { border-bottom: none; }
+  .profile-table td:first-child {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 10px 14px;
+    width: 38%;
+    letter-spacing: 0.5px;
+    opacity: 0.75;
+    vertical-align: top;
+  }
+  .profile-table td:last-child {
+    font-size: 13px;
+    padding: 10px 14px 10px 0;
+    vertical-align: top;
+    word-break: break-word;
+  }
+
+  /* Guestbook */
+  .guestbook-section {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .gb-title {
+    font-family: 'DotGothic16', monospace;
+    font-size: 15px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .gb-form input, .gb-form textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 14px;
+    margin-bottom: 10px;
+    background: var(--pink-light);
+    outline: none;
+  }
+  .gb-form textarea { min-height: 70px; resize: vertical; }
+  .gb-submit {
+    padding: 10px 24px;
+    background: var(--pink-dark);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .gb-submit:hover { background: var(--accent); }
+  .gb-entries { margin-top: 20px; }
+  .gb-entry {
+    background: var(--pink-light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .gb-entry-name { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .gb-entry-body { font-size: 13px; }
+  .gb-entry-date { font-size: 10px; color: #aaa; margin-top: 4px; }
+
+  /* Share URL */
+  .share-box {
+    background: var(--pink-light);
+    border: 2px dashed var(--pink-dark);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .share-box p { font-size: 12px; color: var(--pink-dark); margin-bottom: 8px; font-weight: 700; }
+  .share-url {
+    font-size: 12px;
+    color: var(--accent);
+    word-break: break-all;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  .copy-btn {
+    padding: 8px 20px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: white;
+    padding: 12px 24px; border-radius: 50px;
+    font-size: 14px; font-weight: 700;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    z-index: 9999;
+    animation: toastIn 0.3s ease;
+    display: none;
+  }
+  @keyframes toastIn { from { opacity:0; transform: translateX(-50%) translateY(20px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }
+
+  .loading {
+    text-align: center; padding: 40px;
+    color: var(--pink-dark);
+    font-family: 'DotGothic16', monospace;
+    letter-spacing: 2px;
+    animation: pulse 1s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .not-found {
+    text-align: center; padding: 60px 20px;
+    color: var(--pink-dark);
+  }
+  .not-found h2 { font-family: 'DotGothic16', monospace; font-size: 20px; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP PAGE ===== -->
+<div id="top-page">
+  <div class="site-logo">拝啓プロフィール</div>
+  <div class="site-subtitle">✦ あなたのことを教えてください ✦</div>
+  <div class="top-card">
+    <button class="top-btn primary" onclick="showCreate()">✿ プロフィールを作る</button>
+    <div class="divider">✾ ✾ ✾</div>
+    <div class="search-row">
+      <input type="text" id="search-input" placeholder="IDを入力して検索…" onkeydown="if(event.key==='Enter')searchProfile()">
+      <button onclick="searchProfile()">→</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CREATE PAGE ===== -->
+<div id="create-page">
+  <div class="page-header">
+    <button class="back-btn" onclick="showTop()">← もどる</button>
+    <h1>プロフィールを作る</h1>
+  </div>
+  <div class="form-container">
+
+    <div class="form-section">
+      <div class="section-title">＊ あなたのID設定</div>
+      <div class="field-row">
+        <span class="field-label">マイID *</span>
+        <input type="text" id="f-slug" placeholder="例: sakura2006（半角英数字）" pattern="[a-zA-Z0-9_-]+" required>
+      </div>
+      <div style="font-size:11px;color:#aaa;padding-left:110px;">このIDがあなたのプロフURLになります</div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title">＊ 見た目のカスタマイズ</div>
+      <div class="color-row">
+        <label>背景色</label>
+        <input type="color" id="c-bg" value="#fff0f7">
+        <span class="color-preview">背景の色</span>
+      </div>
+      <div class="color-row">
+        <label>文字色</label>
+        <input type="color" id="c-text" value="#4a3040">
+        <span class="color-preview">文字の色</span>
+      </div>
+      <div class="color-row">
+        <label>リンク色</label>
+        <input type="color" id="c-link" value="#c94080">
+        <span class="color-preview">リンクの色</span>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title">＊ 基本情報</div>
+      <div class="field-row"><span class="field-label">【1】HN</span><input type="text" id="f-hn" placeholder="ハンドルネーム"></div>
+      <div class="field-row"><span class="field-label">【2】HNの由来</span><input type="text" id="f-hn_origin" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【3】性別</span><input type="text" id="f-gender" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【4】誕生日</span><input type="text" id="f-birthday" placeholder="例: 4月1日"></div>
+      <div class="field-row"><span class="field-label">【5】星座</span><input type="text" id="f-star_sign" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【6】血液型</span><input type="text" id="f-blood_type" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【7】前世</span><input type="text" id="f-past_life" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【8】住んでいるところ</span><input type="text" id="f-location" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【9】生まれたところ</span><input type="text" id="f-birthplace" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【10】職業</span><input type="text" id="f-job" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【11】学年</span><input type="text" id="f-grade" placeholder=""></div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title">＊ 見た目・スペック</div>
+      <div class="field-row"><span class="field-label">【12】絡むーちょ</span><input type="text" id="f-contact" placeholder="連絡先・SNS等"></div>
+      <div class="field-row"><span class="field-label">【13】似ている芸能人</span><input type="text" id="f-celebrity_lookalike" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【14】身長</span><input type="text" id="f-height" placeholder="例: 158cm"></div>
+      <div class="field-row"><span class="field-label">【15】体重</span><input type="text" id="f-weight" placeholder="例: 秘密♡"></div>
+      <div class="field-row"><span class="field-label">【16】足のサイズ</span><input type="text" id="f-shoe_size" placeholder="例: 23.5cm"></div>
+      <div class="field-row"><span class="field-label">【17】手の長さ</span><input type="text" id="f-arm_length" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【20】握力</span><input type="text" id="f-grip" placeholder="例: 25kg"></div>
+      <div class="field-row"><span class="field-label">【21】髪型</span><input type="text" id="f-hairstyle" placeholder=""></div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title">＊ 性格・こだわり</div>
+      <div class="field-row"><span class="field-label">【18】趣味</span><textarea id="f-hobby" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【19】特技</span><input type="text" id="f-skill" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【22】口癖</span><input type="text" id="f-catchphrase" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【23】性格</span><textarea id="f-personality" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【24】嗜好品</span><input type="text" id="f-preference" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【25】自慢なこと</span><textarea id="f-proud" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【26】持っている資格</span><input type="text" id="f-qualification" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【27】使っている携帯電話</span><input type="text" id="f-phone" placeholder=""></div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title">＊ 好みのタイプ</div>
+      <div class="field-row"><span class="field-label">【28】好きな男性のタイプ</span><textarea id="f-type_male" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【29】好きな女性のタイプ</span><textarea id="f-type_female" placeholder=""></textarea></div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title">＊ 好きなもの</div>
+      <div class="field-row"><span class="field-label">【30】好きな言葉</span><input type="text" id="f-fav_word" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【31】好きな芸能人</span><input type="text" id="f-fav_celeb" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【32】好きな食べ物</span><input type="text" id="f-fav_food" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【33】嫌いな食べ物</span><input type="text" id="f-dislike_food" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【34】好きな飲み物</span><input type="text" id="f-fav_drink" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【35】嫌いな飲み物</span><input type="text" id="f-dislike_drink" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【36】好きな教科</span><input type="text" id="f-fav_subject" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【37】嫌いな教科</span><input type="text" id="f-dislike_subject" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【38】好きなテレビ番組</span><input type="text" id="f-fav_tv" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【39】好きな映画</span><input type="text" id="f-fav_movie" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【40】好きな本</span><input type="text" id="f-fav_book" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【41】好きなスポーツ</span><input type="text" id="f-fav_sport" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【42】好きな音楽</span><input type="text" id="f-fav_music" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【43】好きなブランド</span><input type="text" id="f-fav_brand" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【44】愛用の香水</span><input type="text" id="f-perfume" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【45】好きな花</span><input type="text" id="f-fav_flower" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【46】好きなゲーム</span><input type="text" id="f-fav_game" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【47】愛車</span><input type="text" id="f-car" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【48】将来の夢</span><textarea id="f-dream" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【49】好きな動物</span><input type="text" id="f-fav_animal" placeholder=""></div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title">＊ 日常・近況</div>
+      <div class="field-row"><span class="field-label">【50】休日の過ごし方</span><textarea id="f-holiday" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【51】尊敬する人</span><input type="text" id="f-respect" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【52】今一番欲しいもの</span><input type="text" id="f-want" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【53】今一番行きたいところ</span><input type="text" id="f-want_to_go" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【54】今一番やりたいこと</span><input type="text" id="f-want_to_do" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【55】よく使う路線</span><input type="text" id="f-train_line" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【56】よく遊ぶところ</span><input type="text" id="f-hangout" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【57】カラオケでよく歌う曲</span><input type="text" id="f-karaoke" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【58】初めて買ったＣＤ</span><input type="text" id="f-first_cd" placeholder=""></div>
+      <div class="field-row"><span class="field-label">【59】マイブーム</span><textarea id="f-my_boom" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【60】最近ひそかに興味があること</span><textarea id="f-secret_interest" placeholder=""></textarea></div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title">＊ 深いところ</div>
+      <div class="field-row"><span class="field-label">【61】生まれ変わったら</span><textarea id="f-reincarnation" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【62】世界平和に必要なのは</span><textarea id="f-world_peace" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【63】兎に角主張したい事</span><textarea id="f-claim" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【64】疑問に思っている事</span><textarea id="f-question" placeholder=""></textarea></div>
+      <div class="field-row"><span class="field-label">【65】ここだけの話</span><textarea id="f-secret" placeholder=""></textarea></div>
+    </div>
+
+    <button class="submit-btn" onclick="submitProfile()" id="submit-btn">✦ プロフィールを公開する ✦</button>
+  </div>
+</div>
+
+<!-- ===== VIEW PAGE ===== -->
+<div id="view-page">
+  <div class="page-header">
+    <button class="back-btn" onclick="showTop()">← もどる</button>
+    <h1>拝啓プロフィール</h1>
+  </div>
+  <div id="view-page-inner">
+    <div class="loading" id="view-loading">よみこみ中…</div>
+    <div id="view-content" style="display:none"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY';
+
+const FIELDS = [
+  {id:'hn', label:'【1】HN'},
+  {id:'hn_origin', label:'【2】HNの由来'},
+  {id:'gender', label:'【3】性別'},
+  {id:'birthday', label:'【4】誕生日'},
+  {id:'star_sign', label:'【5】星座'},
+  {id:'blood_type', label:'【6】血液型'},
+  {id:'past_life', label:'【7】前世'},
+  {id:'location', label:'【8】住んでいるところ'},
+  {id:'birthplace', label:'【9】生まれたところ'},
+  {id:'job', label:'【10】職業'},
+  {id:'grade', label:'【11】学年'},
+  {id:'contact', label:'【12】絡むーちょ'},
+  {id:'celebrity_lookalike', label:'【13】似ている芸能人'},
+  {id:'height', label:'【14】身長'},
+  {id:'weight', label:'【15】体重'},
+  {id:'shoe_size', label:'【16】足のサイズ'},
+  {id:'arm_length', label:'【17】手の長さ'},
+  {id:'hobby', label:'【18】趣味'},
+  {id:'skill', label:'【19】特技'},
+  {id:'grip', label:'【20】握力'},
+  {id:'hairstyle', label:'【21】髪型'},
+  {id:'catchphrase', label:'【22】口癖'},
+  {id:'personality', label:'【23】性格'},
+  {id:'preference', label:'【24】嗜好品'},
+  {id:'proud', label:'【25】自慢なこと'},
+  {id:'qualification', label:'【26】持っている資格'},
+  {id:'phone', label:'【27】使っている携帯電話'},
+  {id:'type_male', label:'【28】好きな男性のタイプ'},
+  {id:'type_female', label:'【29】好きな女性のタイプ'},
+  {id:'fav_word', label:'【30】好きな言葉'},
+  {id:'fav_celeb', label:'【31】好きな芸能人'},
+  {id:'fav_food', label:'【32】好きな食べ物'},
+  {id:'dislike_food', label:'【33】嫌いな食べ物'},
+  {id:'fav_drink', label:'【34】好きな飲み物'},
+  {id:'dislike_drink', label:'【35】嫌いな飲み物'},
+  {id:'fav_subject', label:'【36】好きな教科'},
+  {id:'dislike_subject', label:'【37】嫌いな教科'},
+  {id:'fav_tv', label:'【38】好きなテレビ番組'},
+  {id:'fav_movie', label:'【39】好きな映画'},
+  {id:'fav_book', label:'【40】好きな本'},
+  {id:'fav_sport', label:'【41】好きなスポーツ'},
+  {id:'fav_music', label:'【42】好きな音楽'},
+  {id:'fav_brand', label:'【43】好きなブランド'},
+  {id:'perfume', label:'【44】愛用の香水'},
+  {id:'fav_flower', label:'【45】好きな花'},
+  {id:'fav_game', label:'【46】好きなゲーム'},
+  {id:'car', label:'【47】愛車'},
+  {id:'dream', label:'【48】将来の夢'},
+  {id:'fav_animal', label:'【49】好きな動物'},
+  {id:'holiday', label:'【50】休日の過ごし方'},
+  {id:'respect', label:'【51】尊敬する人'},
+  {id:'want', label:'【52】今一番欲しいもの'},
+  {id:'want_to_go', label:'【53】今一番行きたいところ'},
+  {id:'want_to_do', label:'【54】今一番やりたいこと'},
+  {id:'train_line', label:'【55】よく使う路線'},
+  {id:'hangout', label:'【56】よく遊ぶところ'},
+  {id:'karaoke', label:'【57】カラオケでよく歌う曲'},
+  {id:'first_cd', label:'【58】初めて買ったＣＤ'},
+  {id:'my_boom', label:'【59】マイブーム'},
+  {id:'secret_interest', label:'【60】最近ひそかに興味があること'},
+  {id:'reincarnation', label:'【61】生まれ変わったら'},
+  {id:'world_peace', label:'【62】世界平和に必要なのは'},
+  {id:'claim', label:'【63】兎に角主張したい事'},
+  {id:'question', label:'【64】疑問に思っている事'},
+  {id:'secret', label:'【65】ここだけの話'},
+];
+
+async function api(path, method='GET', body=null) {
+  const opts = {
+    method,
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': method === 'POST' ? 'return=representation' : ''
+    }
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, opts);
+  return res.json();
+}
+
+function showTop() {
+  document.getElementById('top-page').style.display = 'flex';
+  document.getElementById('create-page').style.display = 'none';
+  document.getElementById('view-page').style.display = 'none';
+  history.pushState({}, '', window.location.pathname);
+}
+function showCreate() {
+  document.getElementById('top-page').style.display = 'none';
+  document.getElementById('create-page').style.display = 'block';
+  document.getElementById('view-page').style.display = 'none';
+}
+function showView() {
+  document.getElementById('top-page').style.display = 'none';
+  document.getElementById('create-page').style.display = 'none';
+  document.getElementById('view-page').style.display = 'block';
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 2800);
+}
+
+async function submitProfile() {
+  const slug = document.getElementById('f-slug').value.trim();
+  if (!slug) { toast('マイIDを入力してください'); return; }
+  if (!/^[a-zA-Z0-9_-]+$/.test(slug)) { toast('IDは半角英数字・_・- のみ使えます'); return; }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = '保存中…';
+
+  const data = { slug,
+    bg_color: document.getElementById('c-bg').value,
+    text_color: document.getElementById('c-text').value,
+    link_color: document.getElementById('c-link').value,
+  };
+  FIELDS.forEach(f => {
+    const el = document.getElementById('f-' + f.id);
+    if (el && el.value.trim()) data[f.id] = el.value.trim();
+  });
+
+  // Check if slug exists
+  const existing = await api(`profiles?slug=eq.${slug}&select=id`);
+  let result;
+  if (existing && existing.length > 0) {
+    result = await api(`profiles?slug=eq.${slug}`, 'PATCH', data);
+  } else {
+    result = await api('profiles', 'POST', data);
+  }
+
+  btn.disabled = false;
+  btn.textContent = '✦ プロフィールを公開する ✦';
+
+  if (result && !result.message && !result.error) {
+    toast('✿ 公開しました！');
+    setTimeout(() => loadProfile(slug), 800);
+  } else {
+    toast('エラーが発生しました: ' + (result?.message || result?.error || JSON.stringify(result)));
+  }
+}
+
+async function loadProfile(slug) {
+  showView();
+  document.getElementById('view-loading').style.display = 'block';
+  document.getElementById('view-content').style.display = 'none';
+
+  const data = await api(`profiles?slug=eq.${slug}&select=*`);
+  const p = data && data[0];
+
+  document.getElementById('view-loading').style.display = 'none';
+  document.getElementById('view-content').style.display = 'block';
+
+  if (!p) {
+    document.getElementById('view-content').innerHTML = `<div class="not-found"><h2>プロフィールが見つかりません</h2><p>IDを確認してください</p></div>`;
+    return;
+  }
+
+  const bg = p.bg_color || '#fff0f7';
+  const tc = p.text_color || '#4a3040';
+  const lc = p.link_color || '#c94080';
+  const profileUrl = window.location.origin + window.location.pathname + '?id=' + slug;
+
+  let rows = '';
+  FIELDS.forEach(f => {
+    if (p[f.id]) {
+      rows += `<tr><td style="color:${lc}">${f.label}</td><td>${escHtml(p[f.id])}</td></tr>`;
+    }
+  });
+
+  const gbEntries = await api(`guestbook?profile_slug=eq.${slug}&order=created_at.desc&select=*`);
+  let gbHtml = '';
+  if (gbEntries && gbEntries.length > 0) {
+    gbEntries.forEach(e => {
+      const d = new Date(e.created_at).toLocaleDateString('ja-JP');
+      gbHtml += `<div class="gb-entry"><div class="gb-entry-name" style="color:${lc}">${escHtml(e.name||'名無し')}</div><div class="gb-entry-body">${escHtml(e.body||'')}</div><div class="gb-entry-date">${d}</div></div>`;
+    });
+  } else {
+    gbHtml = '<div style="font-size:13px;color:#aaa;text-align:center;padding:16px;">まだゲスブがありません</div>';
+  }
+
+  document.getElementById('view-content').innerHTML = `
+    <div class="share-box">
+      <p>✦ あなたのプロフURLはこちら ✦</p>
+      <div class="share-url">${profileUrl}</div>
+      <button class="copy-btn" onclick="copyUrl('${profileUrl}')" style="background:${lc}">URLをコピー</button>
+    </div>
+    <div class="profile-card" style="background:${bg};color:${tc};border-color:${lc}">
+      <div class="profile-header" style="background:${bg};border-color:${lc}">
+        <div class="profile-hn" style="color:${lc}">${escHtml(p.hn || slug)}</div>
+        <div class="profile-url-display">拝啓プロフィール ／ ${slug}</div>
+      </div>
+      <table class="profile-table" style="background:${bg};color:${tc}">
+        ${rows || '<tr><td colspan="2" style="text-align:center;padding:20px;color:#aaa">項目が入力されていません</td></tr>'}
+      </table>
+    </div>
+    <div class="guestbook-section">
+      <div class="gb-title" style="color:${lc}">✉ ゲストブック</div>
+      <div class="gb-form">
+        <input type="text" id="gb-name" placeholder="おなまえ（省略可）">
+        <textarea id="gb-body" placeholder="メッセージを書いてね♪"></textarea>
+        <button class="gb-submit" style="background:${lc}" onclick="submitGb('${slug}','${lc}')">書き込む →</button>
+      </div>
+      <div class="gb-entries">${gbHtml}</div>
+    </div>
+  `;
+
+  history.pushState({}, '', '?id=' + slug);
+}
+
+async function submitGb(slug, lc) {
+  const name = document.getElementById('gb-name').value.trim() || '名無し';
+  const body = document.getElementById('gb-body').value.trim();
+  if (!body) { toast('メッセージを入力してください'); return; }
+  await api('guestbook', 'POST', { profile_slug: slug, name, body });
+  toast('✿ 書き込みました！');
+  document.getElementById('gb-name').value = '';
+  document.getElementById('gb-body').value = '';
+  setTimeout(() => loadProfile(slug), 600);
+}
+
+function searchProfile() {
+  const id = document.getElementById('search-input').value.trim();
+  if (!id) { toast('IDを入力してください'); return; }
+  loadProfile(id);
+}
+
+function copyUrl(url) {
+  navigator.clipboard.writeText(url).then(() => toast('✿ コピーしました！'));
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Auto-load from URL
+window.addEventListener('load', () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (id) loadProfile(id);
+});
+</script>
+</body>
+</html>
