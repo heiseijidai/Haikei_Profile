@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - 前略プロフィール風</title>
+    <style>
+        /* アクセントカラー（ピンクベージュ）: #e6d5c3 / #d4b2a7
+           背景: #ffffff
+        */
+        :root {
+            --bg-color: #ffffff;
+            --accent-color: #d4b2a7; /* 少し落ち着いたピンクベージュ */
+            --main-text: #555555;
+            --sub-text: #888888;
+            --border-color: #f2e8e4;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            color: var(--main-text);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* コンテナ設定 */
+        .container {
+            width: 100%;
+            max-width: 480px; /* スマホで見やすい幅 */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* ヘッダー部分 */
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px dotted var(--accent-color);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            margin: 0;
+        }
+
+        /* プロフィール項目 */
+        .profile-section {
+            margin-bottom: 40px;
+        }
+
+        .item {
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        .label {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .content {
+            font-size: 15px;
+            word-wrap: break-word;
+        }
+
+        /* メッセージ欄（掲示板風） */
+        .message-board {
+            background-color: #faf8f7;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .message-board h2 {
+            font-size: 16px;
+            text-align: center;
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 14px;
+            margin-bottom: 10px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 11px;
+            color: var(--sub-text);
+            margin-top: 50px;
+            padding-bottom: 20px;
+        }
+
+        /* リンクの装飾 */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>MY PROFILE</h1>
+    </header>
+
+    <main class="profile-section">
+        <div class="item">
+            <span class="label">Name</span>
+            <div class="content">あなたの名前</div>
+        </div>
+
+        <div class="item">
+            <span class="label">Comment</span>
+            <div class="content">
+                ここには一言コメントが入ります。<br>
+                当時の「前略プロフ」のような懐かしい雰囲気で。
+            </div>
+        </div>
+
+        <div class="item">
+            <span class="label">Favorite Music</span>
+            <div class="content">好きなアーティストやジャンルを書きましょう。</div>
+        </div>
+
+        <div class="item">
+            <span class="label">Hobbies</span>
+            <div class="content">趣味や最近ハマっていることなど。</div>
+        </div>
+
+        <div class="message-board">
+            <h2>MESSAGE</h2>
+            <form action="#">
+                <textarea placeholder="メッセージを入力してください"></textarea>
+                <button type="button" onclick="alert('これはサンプルなので送信されません。')">書き込む</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 My Revival Profile.
+    </footer>
+</div>
+
+</body>
+</html>
