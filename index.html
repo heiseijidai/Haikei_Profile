@@ -593,7 +593,7 @@
 
 <script>
 const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const SUPABASE_KEY = ''eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind0dmJqdnpwcGZhY290Y2Vvd3N3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNTU5MzcsImV4cCI6MjA5MzczMTkzN30.G3jU6z8e58NgoWVNrIgo99Fy65FtA_8AULetvJG07N0;
 
 const FIELDS = [
   {id:'hn', label:'【1】HN'},
@@ -667,8 +667,8 @@ async function api(path, method='GET', body=null) {
   const opts = {
     method,
     headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'apikey': eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind0dmJqdnpwcGZhY290Y2Vvd3N3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNTU5MzcsImV4cCI6MjA5MzczMTkzN30.G3jU6z8e58NgoWVNrIgo99Fy65FtA_8AULetvJG07N0,
+      'Authorization': 'Bearer ' + eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind0dmJqdnpwcGZhY290Y2Vvd3N3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxNTU5MzcsImV4cCI6MjA5MzczMTkzN30.G3jU6z8e58NgoWVNrIgo99Fy65FtA_8AULetvJG07N0,
       'Content-Type': 'application/json',
       'Prefer': method === 'POST' ? 'return=representation' : ''
     }
